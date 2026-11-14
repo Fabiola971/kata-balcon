@@ -34,11 +34,13 @@ function filtrerParLieu(liste, lieu) {
     let tab = [];
     let i = 0;
     liste.forEach(l => {
-        lieu = l.lieu;
-        if(lieu === "intérieur"){
+        let nom = l.nom;
+        if(l.lieu === lieu){
             i++;
-            tab.push(i);
-        }    
+            tab.push(` ${nom}`);
+            // tab.push(i);
+            
+        } 
     });
     console.log(`tableau des plantes: ${tab}`)
     console.log(`${i} plantes`);
@@ -58,13 +60,30 @@ filtrerParLieu(plantes, "intérieur");
 // 3. Si la plante est à arroser, ajoute au <li> la classe "a-arroser"
 // 4. Mets à jour <p id="compteur"> : « 4 plantes à arroser sur 8 »
 //    (utilise compterAArroser, ne recompte pas ici)
+const listePlante = document.getElementById("liste");
+const compteur = document.getElementById("compteur");
 function afficherPlantes(liste) {
-
+    listePlante.innerHTML = "";
+    liste.forEach( list =>{
+        const li = document.createElement("li");
+        li.textContent = list.emoji, list.name;
+        // li.textContent = list.name;
+        if(list.aArroser){
+           li.classList.add("a-arroser");
+        }
+        compterAArroser(liste);
+        let nbrePlanteAArroser = compterAArroser(liste);
+        listePlante.appendChild(li);
+        compteur.textContent = `${nbrePlanteAArroser} plantes à arroser sur ${liste.length}`;
+    })    
 }
+afficherPlantes(plantes);
 
 
 // TODO 4 — Au chargement de la page, affiche toutes les plantes.
-
+document.addEventListener("DOMContentLoaded", () =>{
+    afficherPlantes(plantes);
+})
 
 
 // ---------- PARTIE 3 : les clics ----------
