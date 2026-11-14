@@ -66,8 +66,7 @@ function afficherPlantes(liste) {
     listePlante.innerHTML = "";
     liste.forEach( list =>{
         const li = document.createElement("li");
-        li.textContent = list.emoji, list.name;
-        // li.textContent = list.name;
+        li.textContent = `${list.emoji} ${ list.nom}`;
         if(list.aArroser){
            li.classList.add("a-arroser");
         }
