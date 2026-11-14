@@ -31,9 +31,20 @@ compterAArroser(plantes);
 // Retourne un NOUVEAU tableau avec seulement les plantes dont le lieu
 // est égal au paramètre lieu ("intérieur" ou "extérieur").
 function filtrerParLieu(liste, lieu) {
-
+    let tab = [];
+    let i = 0;
+    liste.forEach(l => {
+        lieu = l.lieu;
+        if(lieu === "intérieur"){
+            i++;
+            tab.push(i);
+        }    
+    });
+    console.log(`tableau des plantes: ${tab}`)
+    console.log(`${i} plantes`);
+    return tab;    
 }
-
+filtrerParLieu(plantes, "intérieur");
 // console.log(filtrerParLieu(plantes, "intérieur")) // doit afficher 4 plantes
 
 
