@@ -11,9 +11,17 @@
 
 // TODO 1 — compterAArroser(liste)
 // Retourne le nombre de plantes de la liste dont aArroser vaut true.
-function compterAArroser(liste) {
-
+function compterAArroser(array) {
+    let count = 0;
+    array.forEach(element => {
+        if(element.aArroser){
+            count++;
+        }
+    });
+    console.log(`count: ${count}`);
+    return count
 }
+compterAArroser(plantes);
 
 // Vérifie dans la console avant de passer à la suite :
 // console.log(compterAArroser(plantes)) // doit afficher 4
