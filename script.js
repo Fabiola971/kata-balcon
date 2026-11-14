@@ -21,7 +21,7 @@ function compterAArroser(array) {
     console.log(`count: ${count}`);
     return count
 }
-compterAArroser(plantes);
+// compterAArroser(plantes);
 
 // Vérifie dans la console avant de passer à la suite :
 // console.log(compterAArroser(plantes)) // doit afficher 4
@@ -32,21 +32,23 @@ compterAArroser(plantes);
 // est égal au paramètre lieu ("intérieur" ou "extérieur").
 function filtrerParLieu(liste, lieu) {
     let tab = [];
+    let tab1 = [];
     let i = 0;
     liste.forEach(l => {
         let nom = l.nom;
         if(l.lieu === lieu){
             i++;
             tab.push(` ${nom}`);
+            tab1.push(l);
             // tab.push(i);
             
         } 
     });
     console.log(`tableau des plantes: ${tab}`)
     console.log(`${i} plantes`);
-    return tab;    
+    return tab1;    
 }
-filtrerParLieu(plantes, "intérieur");
+// filtrerParLieu(plantes, "intérieur");
 // console.log(filtrerParLieu(plantes, "intérieur")) // doit afficher 4 plantes
 
 
@@ -76,7 +78,7 @@ function afficherPlantes(liste) {
         compteur.textContent = `${nbrePlanteAArroser} plantes à arroser sur ${liste.length}`;
     })    
 }
-afficherPlantes(plantes);
+// afficherPlantes(plantes);
 
 
 // TODO 4 — Au chargement de la page, affiche toutes les plantes.
@@ -93,11 +95,32 @@ document.addEventListener("DOMContentLoaded", () =>{
 // Au clic sur « Extérieur » : seulement celles d'extérieur.
 // Au clic sur « Toutes » : toutes les plantes.
 // Les gestionnaires sont des fonctions fléchées : () => { ... }
+const allPlants = document.getElementById("btn-toutes");
+const outPlants = document.getElementById("btn-exterieur");
+const inPlants = document.getElementById("btn-interieur");
 
 
 
 // TODO 6 — Le bouton actif
 // Le bouton cliqué prend la classe "actif", les deux autres la perdent.
+allPlants.addEventListener("click", () =>{
+    afficherPlantes(plantes);
+    // alert(afficherPlantes(plantes));
+})
+
+outPlants.addEventListener("click", () =>{
+    filtrerParLieu(plantes, "extérieur");
+    // alert(filtrerParLieu(plantes, "extérieur"));
+    let allOutPlants = filtrerParLieu(plantes, "extérieur");
+    // alert(allOutPlants);
+    afficherPlantes(allOutPlants);
+})
+
+inPlants.addEventListener("click", () =>{
+    filtrerParLieu(plantes, "intérieur");
+    const allInPlants = filtrerParLieu(plantes, "intérieur");
+    afficherPlantes(allInPlants);
+})
 
 
 
