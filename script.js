@@ -64,6 +64,7 @@ function filtrerParLieu(liste, lieu) {
 //    (utilise compterAArroser, ne recompte pas ici)
 const listePlante = document.getElementById("liste");
 const compteur = document.getElementById("compteur");
+
 function afficherPlantes(liste) {
     listePlante.innerHTML = "";
     liste.forEach( list =>{
@@ -75,6 +76,7 @@ function afficherPlantes(liste) {
         compterAArroser(liste);
         let nbrePlanteAArroser = compterAArroser(liste);
         listePlante.appendChild(li);
+        
         compteur.textContent = `${nbrePlanteAArroser} plantes à arroser sur ${liste.length}`;
     })    
 }
@@ -120,7 +122,7 @@ outPlants.addEventListener("click", () =>{
 inPlants.addEventListener("click", () =>{
     filtrerParLieu(plantes, "intérieur");
     const allInPlants = filtrerParLieu(plantes, "intérieur");
-    afficherPlantes(allInPlants);
+    afficherPlantes(allInPlants, compteur);
     filterActive(inPlants);
 })
 
@@ -136,6 +138,6 @@ const filterActive = (bouton) => {
 // =====================================================
 // Questions de recul (réponds en commentaire ici)
 // 1.
-// 2.
-// 3.
+// 2.Les elements de l'action precedente reste en place, et lorsque l'on clique sur unbouton  les éléments s'ajoutent.
+// 3. Il n'y aucun changement dans mon fichier html
 // =====================================================
