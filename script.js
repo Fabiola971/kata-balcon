@@ -105,7 +105,7 @@ const inPlants = document.getElementById("btn-interieur");
 // Le bouton cliqué prend la classe "actif", les deux autres la perdent.
 allPlants.addEventListener("click", () =>{
     afficherPlantes(plantes);
-    // alert(afficherPlantes(plantes));
+    filterActive(allPlants)
 })
 
 outPlants.addEventListener("click", () =>{
@@ -114,14 +114,23 @@ outPlants.addEventListener("click", () =>{
     let allOutPlants = filtrerParLieu(plantes, "extérieur");
     // alert(allOutPlants);
     afficherPlantes(allOutPlants);
+    filterActive(outPlants);
 })
 
 inPlants.addEventListener("click", () =>{
     filtrerParLieu(plantes, "intérieur");
     const allInPlants = filtrerParLieu(plantes, "intérieur");
     afficherPlantes(allInPlants);
+    filterActive(inPlants);
 })
 
+const filterActive = (bouton) => {
+    allPlants.classList.remove("actif");
+    outPlants.classList.remove("actif");
+    inPlants.classList.remove("actif");
+
+    bouton.classList.add("actif");
+}
 
 
 // =====================================================
